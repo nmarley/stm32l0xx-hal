@@ -10,7 +10,8 @@ use crate::{
 type PacSyscfg = pac::SYSCFG;
 
 pub struct SYSCFG {
-    pub(crate) syscfg: PacSyscfg,
+    // pub(crate) syscfg: PacSyscfg,
+    pub syscfg: PacSyscfg,
 }
 
 impl SYSCFG {
@@ -18,7 +19,7 @@ impl SYSCFG {
         // Enable SYSCFG peripheral
         PacSyscfg::enable(rcc);
         // Reset SYSCFG peripheral
-        PacSyscfg::reset(rcc);
+        // PacSyscfg::reset(rcc);
 
         SYSCFG { syscfg }
     }
