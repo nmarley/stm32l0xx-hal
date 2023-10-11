@@ -1,11 +1,11 @@
-#![deny(warnings)]
+// #![deny(warnings)]
 #![deny(unsafe_code)]
 #![no_main]
 #![no_std]
 
 extern crate panic_halt;
 
-//use core::fmt::Write;
+use core::fmt::Write;
 use cortex_m_rt::entry;
 use stm32l0xx_hal::{pac, prelude::*, rcc::Config, serial};
 
@@ -35,11 +35,21 @@ fn main() -> ! {
     let (mut tx, mut rx) = serial.split();
 
     // core::fmt::Write is implemented for tx.
-    //writeln!(tx, "Hello, world!").unwrap();
+    writeln!(tx, "Hello, world!").unwrap();
 
     loop {
         // Echo what is received on the serial link.
         let received = block!(rx.read()).unwrap();
         block!(tx.write(received)).ok();
     }
+
+    // loop {
+    //     // For demonstration, we're just going to send a simple message
+    //     let message: &[u8] = b"Hello, USART!\r\n";
+    //     for byte in message {
+    //         block!(tx.write(*byte)).unwrap();
+    //     }
+    //     // TODO: add logic to read from rx and echo it back or handle it as needed.
+    // }
+
 }

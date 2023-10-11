@@ -22,11 +22,11 @@ fn main() -> ! {
 
     // Acquire the GPIOA peripheral. This also enables the clock for GPIOA in
     // the RCC register.
-    let gpioa = dp.GPIOA.split(&mut rcc);
+    let gpioc = dp.GPIOC.split(&mut rcc);
 
     // Choose TX / RX pins
-    let tx_pin = gpioa.pa2;
-    let rx_pin = gpioa.pa3;
+    let tx_pin = gpioc.pc10;
+    let rx_pin = gpioc.pc11;
 
     // Configure the serial peripheral.
     let mut serial = dp
